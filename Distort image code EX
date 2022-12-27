@@ -1,0 +1,16 @@
+# Import the necessary libraries
+import numpy as np
+import cv2
+
+# Load the original image
+image = cv2.imread('image.jpg')
+
+# Create a distorted version of the image
+distorted_image = image.copy()
+for i in range(image.shape[0]):
+  for j in range(image.shape[1]):
+    distorted_image[i][j] = image[(i + j) % image.shape[0]][(i + j) % image.shape[1]]
+
+# Save the distorted image
+cv2.imwrite('distorted_image.jpg', distorted_image)
+    
